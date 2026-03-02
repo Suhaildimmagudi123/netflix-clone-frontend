@@ -16,20 +16,22 @@ function HomePage() {
   const [watchlist, setWatchlist] = useState([]);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    // Fetch movies safely
-    axios.get(`${API_BASE}/movies/`)
-      .then(response => {
-        if (Array.isArray(response.data)) {
-          setMovies(response.data);
-        } else {
-          setMovies([]);
-        }
-      })
-      .catch(error => {
-        console.error('Movies error:', error);
+ useEffect(() => {
+  axios.get(`${API_BASE}/movies/`)
+    .then(response => {
+      if (Array.isArray(response.data)) {
+        setMovies(response.data);
+      } else if (response.data.results) {
+        setMovies(response.data.results);
+      } else {
         setMovies([]);
-      });
+      }
+    })
+    .catch(error => {
+      console.error('Movies error:', error);
+      setMovies([]);
+    });
+}, []);
 
     const loggedUser = localStorage.getItem('username');
     const token = localStorage.getItem('token');
