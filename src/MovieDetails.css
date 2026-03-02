@@ -1,0 +1,80 @@
+.movie-details {
+  min-height: 100vh;
+  background-color: #141414;
+  padding: 20px 50px;
+  color: white;
+}
+
+.back-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-bottom: 30px;
+  transition: all 0.3s;
+}
+
+.back-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.details-container {
+  display: flex;
+  gap: 40px;
+  max-width: 1200px;
+}
+
+.detail-img {
+  width: 400px;
+  height: 600px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.info-section {
+  flex: 1;
+}
+
+.info-section h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.meta {
+  display: flex;
+  gap: 20px;
+  font-size: 18px;
+  color: #999;
+  margin-bottom: 30px;
+}
+
+.description {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  color: #ccc;
+}
+
+.watch-btn {
+  display: inline-block;
+  background-color: #e50914;
+  color: white;
+  padding: 15px 40px;
+  font-size: 18px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.watch-btn:hover {
+  background-color: #f40612;
+}
+
+.loading, .error {
+  text-align: center;
+  padding: 100px;
+  font-size: 24px;
+}
