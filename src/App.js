@@ -5,7 +5,6 @@ import MovieDetails from './MovieDetails';
 import Auth from './Auth';
 import './App.css';
 
-// Uses .env if available, otherwise falls back to local
 const API_BASE =
   process.env.REACT_APP_API_BASE || 'http://127.0.0.1:8000/api';
 
@@ -16,23 +15,24 @@ function HomePage() {
   const [watchlist, setWatchlist] = useState([]);
   const navigate = useNavigate();
 
- useEffect(() => {
-  axios.get(`${API_BASE}/movies/`)
-    .then(response => {
-      if (Array.isArray(response.data)) {
-        setMovies(response.data);
-      } else if (response.data.results) {
-        setMovies(response.data.results);
-      } else {
+  useEffect(() => {
+    // Fetch movies
+    axios.get(`${API_BASE}/movies/`)
+      .then(response => {
+        if (Array.isArray(response.data)) {
+          setMovies(response.data);
+        } else if (response.data.results) {
+          setMovies(response.data.results);
+        } else {
+          setMovies([]);
+        }
+      })
+      .catch(error => {
+        console.error('Movies error:', error);
         setMovies([]);
-      }
-    })
-    .catch(error => {
-      console.error('Movies error:', error);
-      setMovies([]);
-    });
-}, []);
+      });
 
+    // Fetch logged user + watchlist
     const loggedUser = localStorage.getItem('username');
     const token = localStorage.getItem('token');
 
@@ -44,17 +44,14 @@ function HomePage() {
       })
         .then(res => {
           if (Array.isArray(res.data)) {
-            const watchlistIds = res.data
+            const ids = res.data
               .map(item => item.movie?.id)
               .filter(Boolean);
-            setWatchlist(watchlistIds);
-          } else {
-            setWatchlist([]);
+            setWatchlist(ids);
           }
         })
         .catch(err => {
           console.error('Watchlist error:', err);
-          setWatchlist([]);
         });
     }
   }, []);
