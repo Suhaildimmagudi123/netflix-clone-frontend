@@ -6,7 +6,8 @@ import Auth from './Auth';
 import './App.css';
 
 const API_BASE =
-  import.meta.env.VITE_API_BASE || 'http://127.0.0.1:8000/api';
+  process.env.REACT_APP_API_BASE || 'http://127.0.0.1:8000/api';
+  
 function HomePage() {
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
