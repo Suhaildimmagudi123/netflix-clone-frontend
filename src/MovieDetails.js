@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './MovieDetails.css';
-const API_BASE =
-  process.env.REACT_APP_API_BASE || 'http://127.0.0.1:8000/api';
+const API_BASE = 'https://netflix-clone-078z.onrender.com/api';
 
 function MovieDetails() {
   const { id } = useParams();

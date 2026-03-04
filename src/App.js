@@ -5,9 +5,7 @@ import MovieDetails from './MovieDetails';
 import Auth from './Auth';
 import './App.css';
 
-const API_BASE =
-  process.env.REACT_APP_API_BASE || 'http://127.0.0.1:8000/api';
-  
+const API_BASE = 'https://netflix-clone-078z.onrender.com/api';  
 function HomePage() {
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
