@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Auth.css';
 
-const API_BASE = 'http://localhost:8000/api';
+const API_BASE = 'https://netflix-clone-078z.onrender.com/api';
 
 function Auth() {
   const [isLogin, setIsLogin] = useState(true);
