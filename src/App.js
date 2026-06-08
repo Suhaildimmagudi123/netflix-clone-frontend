@@ -15,6 +15,7 @@ function HomePage() {
 
   useEffect(() => {
     // Fetch movies
+    console.log("FETCHING MOVIES FROM:", API_BASE);
     axios.get(`${API_BASE}/movies/`)
       .then(response => {
         if (Array.isArray(response.data)) {
