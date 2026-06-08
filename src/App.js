@@ -15,21 +15,26 @@ function HomePage() {
 
   useEffect(() => {
     // Fetch movies
-    console.log("FETCHING MOVIES FROM:", API_BASE);
-    axios.get(`${API_BASE}/movies/`)
-      .then(response => {
-        if (Array.isArray(response.data)) {
-          setMovies(response.data);
-        } else if (response.data.results) {
-          setMovies(response.data.results);
-        } else {
-          setMovies([]);
-        }
-      })
-      .catch(error => {
-        console.error('Movies error:', error);
-        setMovies([]);
-      });
+    // Fetch movies
+console.log("FETCHING MOVIES FROM:", API_BASE);
+
+axios.get(`${API_BASE}/movies/`)
+  .then(response => {
+    console.log("MOVIES RESPONSE:", response.data);
+
+    if (Array.isArray(response.data)) {
+      setMovies(response.data);
+    } else if (response.data.results) {
+      setMovies(response.data.results);
+    } else {
+      setMovies([]);
+    }
+  })
+  .catch(error => {
+    console.error("Movies error:", error);
+    console.error("Movies error response:", error.response);
+    setMovies([]);
+  });
 
     // Fetch logged user + watchlist
     const loggedUser = localStorage.getItem('username');
